@@ -5,10 +5,10 @@ class Human {
   }
   makeChoice(choice) {
     this.choice = choice;
-    console.log(`나의 선택은 ${choice}입니다`);
+    return `나의 선택은 ${choice}입니다`;
+  }
+  gethi() {
+    return "hello";
   }
 }
-
-let humanbeing = new Human();
-
 export default Human;
