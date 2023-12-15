@@ -1,25 +1,28 @@
-class A {
-  methodA() {
-    console.log("A의 메소드");
+class picachu {
+  constructor(name, type, age) {
+    this.name = name;
+    this.type = type;
+    this.age = age;
   }
-  get() {
-    return "hello world";
-  }
-}
-
-class B {
-  methodB() {
-    console.log("B의 메소드");
+  attack() {
+    if (this.name === "피카츄") {
+      console.log("안녕 나는 피가츄다 음하하");
+    }
   }
 }
+let pocketmon = new picachu("피카츄", "포켓몬", 18);
 
-class C extends A {
-  methodC() {
-    console.log("C의 메소드");
-  }
-}
+const handler = {
+  get(target, property) {
+    // 가로채고 있는 원본객체, 접근하려는 속성의 이름
+    console.log(`${property}에 접근했다람쥐`);
+    return target[property];
+  },
+};
 
-const cInstance = new C();
-cInstance.methodA(); // A의 메소드
-cInstance.methodC(); // C의 메소드
-console.log(cInstance.get());
+let proxiedPockemon = new Proxy(pocketmon, handler);
+console.log(proxiedPockemon);
+proxiedPockemon.name;
+proxiedPockemon.type;
+
+pocketmon.attack();
